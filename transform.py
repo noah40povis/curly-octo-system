@@ -84,6 +84,8 @@ def auto(excel_file):
     #alter column to 1 v 0 to fit format 
     sliced['seller_distinguished'] = np.where(sliced['seller_distinguished']== 'DISTINGUISHED',1,0)
     
+    #clear seller rating column 
+    sliced['seller_rating'] = sliced['seller_rating'].str.replace(r'\w', '')
 
     #sort values by seller pk 
     sliced = sliced.sort_values('seller_pk')
@@ -97,13 +99,13 @@ def auto(excel_file):
 
     sliced.drop([0], inplace=True)
 
+    
+
     return sliced.to_csv('cleaned_sheet.csv', index=False)
 
 auto(excel_file)
 
 
-#relational database 
-#snowflake schema 
 """ Considering the datatypes we are working with: text and numeric, the amount of data: >1GB, performance need: instant querying is not critical 
     I would say it would be safe to use a relational database with a flat database model. 
 
