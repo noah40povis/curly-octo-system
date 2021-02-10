@@ -36,7 +36,7 @@ def auto(excel_file):
     seller_address.country = seller_address.country.astype("unicode")
     #get rid of duplicates to avoid merging issue 
     seller_address.drop_duplicates(subset=['seller_pk'], inplace=True)
-    #reset index 
+    #reset index for join statement w3
     seller_address.reset_index(inplace=True)
     #join dataframes but only include state and country 
     seller_final  = seller_address_gb.join(seller_address[['state','country']], lsuffix=['seller_pk'], rsuffix=['seller_pk'], how='inner')
@@ -103,8 +103,8 @@ def auto(excel_file):
 
     return sliced.to_csv('cleaned_sheet.csv', index=False)
 
-auto(excel_file)
-
+if __name__ == '__main__':
+    auto(excel_file)
 
 
 
