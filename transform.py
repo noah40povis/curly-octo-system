@@ -106,9 +106,11 @@ def auto(excel_file):
 auto(excel_file)
 
 
-""" Considering the datatypes we are working with: text and numeric, the amount of data: >1GB, performance need: instant querying is not critical 
-    I would say it would be safe to use a relational database with a flat database model. 
 
+
+""" Considering the datatypes we are working with: text and numeric, 
+    the amount of data: >1GB, performance need: instant querying is not critical 
+    I would say it would be safe to use a relational database with a flat database model. 
 """
 
 
